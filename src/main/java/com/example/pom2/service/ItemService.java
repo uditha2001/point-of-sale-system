@@ -1,6 +1,7 @@
 package com.example.pom2.service;
 
 import com.example.pom2.dto.ItemDTO;
+import com.example.pom2.dto.paginated.PaginatedResponseItemDTO;
 import com.example.pom2.dto.request.ItemGetRequestDTO;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface ItemService {
     List<ItemGetRequestDTO> getItemByNameAndStatus(String itemName);
 
     List<ItemGetRequestDTO> getItemByNameAndStatusByMapStruct(String itemName);
+
+    PaginatedResponseItemDTO getItemByActiveStatusWithPagin(boolean activeStatus, int page, int size);
 }

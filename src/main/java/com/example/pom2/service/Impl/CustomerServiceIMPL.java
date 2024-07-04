@@ -4,6 +4,7 @@ package com.example.pom2.service.Impl;
 import com.example.pom2.dto.CustomerDTO;
 import com.example.pom2.dto.request.CustomerUpdateDTO;
 import com.example.pom2.entity.Customer;
+import com.example.pom2.exception.NotFoundException;
 import com.example.pom2.repo.CustomerRepo;
 import com.example.pom2.service.CustomerService;
 import org.modelmapper.ModelMapper;
@@ -62,9 +63,15 @@ public class CustomerServiceIMPL implements CustomerService {
     @Override
     public List<CustomerDTO> getAllCustomers() {
         List<Customer> customers=customerRepo.findAll();
-        List<CustomerDTO> customerDTOs=modelMapper.map(customers,new TypeToken<List<CustomerDTO>>(){}.getType());
+        if(customers.size()>0) {
+            List<CustomerDTO> customerDTOs = modelMapper.map(customers, new TypeToken<List<CustomerDTO>>() {
+            }.getType());
+            return customerDTOs;
+        }
+        else{
+            throw new NotFoundException("customer not found");//call the custome exception class
+        }
 
-        return customerDTOs;
     }
 
     @Override

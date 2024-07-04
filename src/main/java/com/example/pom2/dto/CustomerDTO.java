@@ -1,5 +1,12 @@
 package com.example.pom2.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class CustomerDTO {
 
     private int customerId;
@@ -9,18 +16,7 @@ public class CustomerDTO {
     private boolean active;
    // private ArrayList<String> contactNumbers=new ArrayList<String>();
     private double customerSalary;
-    public CustomerDTO() {
-    }
 
-    public CustomerDTO(int customerId, String customerName, String customerAddress, String nic, boolean active, double customerSalary) {
-        this.customerId = customerId;
-        this.customerName = customerName;
-        this.customerAddress = customerAddress;
-        this.nic = nic;
-        this.active = active;
-        this.customerSalary = customerSalary;
-        //this.contactNumbers = contactNumbers;
-    }
 
     public double getCustomerSalary() {
         return customerSalary;
@@ -74,14 +70,5 @@ public class CustomerDTO {
         this.active = active;
     }
 
-    @Override
-    public String toString() {
-        return "CustomerDTO{" +
-                "customerId=" + customerId +
-                ", customerName='" + customerName + '\'' +
-                ", customerAddress='" + customerAddress + '\'' +
-                ", nic='" + nic + '\'' +
-                ", active=" + active +
-                '}';
-    }
+
 }
